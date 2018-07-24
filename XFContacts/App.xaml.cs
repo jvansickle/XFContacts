@@ -1,6 +1,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFContacts.Page;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XFContacts
@@ -11,7 +12,7 @@ namespace XFContacts
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ContactListPage();
         }
 
         protected override void OnStart()
