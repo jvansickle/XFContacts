@@ -6,7 +6,10 @@
     <ContentPage.Content>
 
         <ListView ItemsSource="{Binding Contacts}"
-                  SelectedItem="{Binding SelectedContact}">
+                  SelectedItem="{Binding SelectedContact}"
+                  RefreshCommand="{Binding RefreshContactsCommand}"
+                  IsPullToRefreshEnabled="true"
+                  IsRefreshing="{Binding IsRefreshingContacts, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding LastName}" Detail="{Binding FirstName}"/>
