@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using XFContacts.Model;
 using XFContacts.ViewModel;
 
@@ -11,6 +12,13 @@ namespace XFContacts.Page
             InitializeComponent();
 
             BindingContext = new ContactDetailViewModel(contact);
+
+            NavigationPage.SetBackButtonTitle(this, "Done");
+        }
+
+        void OnEditContact(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditContactPage((BindingContext as ContactDetailViewModel).Contact), true);
         }
     }
 }
