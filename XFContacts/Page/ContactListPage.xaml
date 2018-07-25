@@ -4,6 +4,11 @@
              x:Class="XFContacts.Page.ContactListPage"
              Title="Contacts"
              x:Name="rootPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Clicked="OnAddContact"/>
+    </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
 

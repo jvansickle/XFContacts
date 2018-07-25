@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using XFContacts.Model;
 using XFContacts.ViewModel;
 
@@ -20,6 +21,11 @@ namespace XFContacts.Page
                 Navigation.PushAsync(new ContactDetailPage(e.SelectedItem as Contact), true);
                 (sender as ListView).SelectedItem = null;
             }
+        }
+
+        void OnAddContact(object sender, EventArgs args)
+        {
+            Navigation.PushModalAsync(new NavigationPage(new AddContactPage()), true);
         }
     }
 }

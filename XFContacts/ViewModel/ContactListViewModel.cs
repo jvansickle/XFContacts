@@ -21,8 +21,6 @@ namespace XFContacts.ViewModel
             set { _isRefreshingContacts = value; NotifyPropertyChanged(); }
         }
 
-        int contactCount;
-
         public ContactListViewModel()
         {
             RefreshContacts();
@@ -30,11 +28,12 @@ namespace XFContacts.ViewModel
 
         void RefreshContacts()
         {
-            for (int i = contactCount; i < contactCount + 100; i++)
+            Contacts.Clear();
+
+            for (int i = 1; i <= 20; i++)
             {
                 Contacts.Add(new Contact { FirstName = $"FirstName {i}", LastName = $"LastName {i}" });
             }
-            contactCount += 100;
 
             IsRefreshingContacts = false;
         }
