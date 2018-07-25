@@ -2,15 +2,17 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using XFContacts.Model;
+using XFContacts.Service;
 
 namespace XFContacts.ViewModel
 {
     public class ContactListViewModel : BaseViewModel
     {
-        readonly ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
-        public ObservableCollection<Contact> Contacts { get { return _contacts; } }
+        public ObservableCollection<Contact> Contacts { get { return ContactService.Contacts; } }
 
         public ICommand RefreshContactsCommand => new Command(RefreshContacts);
+
+        public ICommand DeleteContactCommand => new Command(DeleteContact);
 
         bool _isRefreshingContacts;
         public bool IsRefreshingContacts
@@ -35,6 +37,11 @@ namespace XFContacts.ViewModel
             contactCount += 100;
 
             IsRefreshingContacts = false;
+        }
+
+        void DeleteContact(object contact)
+        {
+            ContactService.Contacts.Remove((Contact)contact);
         }
     }
 }

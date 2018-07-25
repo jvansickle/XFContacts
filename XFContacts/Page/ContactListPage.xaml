@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFContacts.Page.ContactListPage"
-             Title="Contacts">
+             Title="Contacts"
+             x:Name="rootPage">
     
     <ContentPage.Content>
 
@@ -13,7 +14,15 @@
                   ItemSelected="OnContactSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding LastName}" Detail="{Binding FirstName}"/>
+                    <TextCell Text="{Binding LastName}"
+                              Detail="{Binding FirstName}">
+                        <TextCell.ContextActions>
+                            <MenuItem Command="{Binding Source={x:Reference rootPage}, Path=BindingContext.DeleteContactCommand}"
+                                      CommandParameter="{Binding .}"
+                                      Text="Delete"
+                                      IsDestructive="true"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
