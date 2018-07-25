@@ -25,5 +25,17 @@ namespace XFContacts.Page
 
             Navigation.PopModalAsync();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            var contact = (BindingContext as AddContactViewModel).Contact;
+
+            if (string.IsNullOrWhiteSpace(contact.FirstName) && string.IsNullOrWhiteSpace(contact.LastName))
+            {
+                ContactService.Contacts.Remove(contact);
+            }
+
+            return base.OnBackButtonPressed();
+        }
     }
 }
