@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="ViewModel\" />
     <Folder Include="Page\" />
+    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainPage.xaml.cs" />

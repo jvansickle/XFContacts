@@ -12,7 +12,7 @@ namespace XFContacts
         {
             InitializeComponent();
 
-            MainPage = new ContactListPage();
+            MainPage = new NavigationPage(new ContactListPage());
         }
 
         protected override void OnStart()

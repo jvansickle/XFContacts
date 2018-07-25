@@ -1,17 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XFContacts.Model;
 
 namespace XFContacts.ViewModel
 {
     public class ContactListViewModel : BaseViewModel
     {
-        public class Contact
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-        }
-
         readonly ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
         public ObservableCollection<Contact> Contacts { get { return _contacts; } }
 

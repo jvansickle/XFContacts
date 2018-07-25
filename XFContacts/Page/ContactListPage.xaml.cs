@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using XFContacts.Model;
 using XFContacts.ViewModel;
 
 namespace XFContacts.Page
@@ -13,6 +11,15 @@ namespace XFContacts.Page
             InitializeComponent();
 
             BindingContext = new ContactListViewModel();
+        }
+
+        void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                Navigation.PushAsync(new ContactDetailPage(e.SelectedItem as Contact), true);
+                (sender as ListView).SelectedItem = null;
+            }
         }
     }
 }
